@@ -1,30 +1,26 @@
 package com.despegar.aftersale;
 
-import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
-import com.despegar.aftersale.dto.PersonDTO;
 import com.despegar.aftersale.dto.ReplieDTO;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {    
     public static final char SEPARATOR=',';
-    public static final char QUOTE='"';
 
     public static void main(String[] args) {
 
        CSVReader reader = null;
        try {
-    	   List<ReplieDTO> beans = new CsvToBeanBuilder<ReplieDTO>(new FileReader("files/replies.csv"))
+    	   BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("files/replies-original.csv"), "UTF-8"));
+    	   List<ReplieDTO> beans = new CsvToBeanBuilder<ReplieDTO>(bufferedReader)
          		  .withSeparator(SEPARATOR)
-         		  //.withEscapeChar(QUOTE)
          	      .withType(ReplieDTO.class).build().parse();
            
     	   int count = 0;
@@ -43,7 +39,6 @@ public class App
              try {
 				reader.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
           } 

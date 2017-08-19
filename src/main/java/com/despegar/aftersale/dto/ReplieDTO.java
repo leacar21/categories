@@ -7,26 +7,39 @@ import com.opencsv.bean.CsvDate;
 
 public class ReplieDTO {
 	
-	@CsvBindByName
+//  0 - ID 
+//	1 - REASON 
+//	2 - FATHER_TYPE 
+//	3 - OTHER_REASON 
+//	4 - ID 
+//	5 - USER 
+//	6 - TYPE 
+//	7 - SUGGESTION_ID 
+//	8 - INTERNAL 
+//	9 - CREATED_DATE 
+//	10 - TEXT
+//	11 - CUSTOM_RESPONSE
+	
+	@CsvBindByName(column = "ID")
 	private String id;
 	
-	@CsvBindByName
+	@CsvBindByName(column = "REASON")
 	private String reason;
 	
-	@CsvBindByName
+	@CsvBindByName(column = "OTHER_REASON")
 	private String otherReason;
 	
-	@CsvBindByName
+	@CsvBindByName(column = "USER")
 	private String user;
 	
-	@CsvBindByName
+	@CsvBindByName(column = "TYPE")
 	private String type;
 	
-	@CsvBindByName
+	@CsvBindByName(column = "CREATED_DATE")
 	@CsvDate("yyyy-MM-dd hh:mm:ss")
 	private Date createdDate;
 	
-	@CsvBindByName
+	@CsvBindByName(column = "TEXT")
 	private String text;
 	
 	public String getId() {
